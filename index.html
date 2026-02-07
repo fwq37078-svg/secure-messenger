@@ -1,1 +1,84 @@
-<!DOCTYPE html><html><head><base href="/"><meta charset="UTF-8"><meta content="IE=Edge" http-equiv="X-UA-Compatible"><meta name="description" content="Secure Messenger Web App"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="Secure Messenger"><link rel="apple-touch-icon" href="icons/Icon-192.png"><link rel="icon" type="image/png" href="favicon.png"/><title>Secure Messenger</title><link rel="manifest" href="manifest.json"><script>var flet={webRenderer:"canvaskit",useColorEmoji:!0,multiView:!1,noCdn:!1,assetBase:""};flet.ready=new Promise(function(resolve){flet.flutterAppResolve=resolve;});</script><script src="flutter_bootstrap.js" defer></script></head><body style="background-color: #212121; margin: 0; overflow: hidden;"><div id="loading" style="display: flex; justify-content: center; align-items: center; height: 100vh;"><img src="icons/loading-animation.png" alt="Loading..." style="width: 64px; height: 64px; opacity: 0.7;"></div></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 1. الأساسيات -->
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 2. تحذيرات Deprecation -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Secure Messenger" />
+
+    <!-- 3. الأيقونات والمانيفيست -->
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="manifest" href="manifest.json" />
+    <title>Secure Messenger</title>
+
+    <!-- 4. سكريبت Flutter -->
+    <script src="flutter.js" defer></script>
+  </head>
+  <body style="background-color: #212121; margin: 0; overflow: hidden">
+    <!-- شاشة التحميل -->
+    <div
+      id="loading"
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      "
+    >
+      <div
+        style="
+          width: 48px;
+          height: 48px;
+          border: 5px solid #fff;
+          border-bottom-color: transparent;
+          border-radius: 50%;
+          display: inline-block;
+          box-sizing: border-box;
+          animation: rotation 1s linear infinite;
+        "
+      ></div>
+      <style>
+        @keyframes rotation {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+    </div>
+
+    <script>
+      // إعدادات Flet الأساسية
+      var flet = {
+        webRenderer: "html", // استخدام HTML بدل CanvasKit لتفادي الأخطاء
+        useColorEmoji: true,
+        multiView: false,
+        noCdn: false,
+        assetBase: "",
+      };
+
+      window.addEventListener("load", function (ev) {
+        // تحميل التطبيق بدون Service Worker لتفادي مشاكل التحميل
+        _flutter.loader.loadEntrypoint({
+          onEntrypointLoaded: function (engineInitializer) {
+            engineInitializer
+              .initializeEngine({
+                renderer: "html", // تأكيد استخدام HTML Renderer
+              })
+              .then(function (appRunner) {
+                appRunner.runApp();
+              });
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
