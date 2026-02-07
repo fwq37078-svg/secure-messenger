@@ -41,7 +41,7 @@ const RESOURCES = {"assets/app/app.zip": "215b4048a39493f13f1905a336f97fd5",
 "icons/Icon-maskable-512.png": "0b1dcfc1bd6c872904999125eaf18b58",
 "icons/loading-animation.png": "41a96047dbd2463a50c46ad3bf6ff158",
 "index.html": "09e7a98439d73c4457887195311fa699",
-"/": "09e7a98439d73c4457887195311fa699",
+"/secure-messenger/": "09e7a98439d73c4457887195311fa699",
 "main.dart.js": "134f101578dac32e27d6eb10502389e9",
 "main.dart.mjs": "d56b2be829ab67905f21d30f4e42a56e",
 "main.dart.wasm": "6a4c5fadc293b531fceeaafbb64bda40",
@@ -118,7 +118,7 @@ self.addEventListener("activate", function(event) {
       for (var request of await contentCache.keys()) {
         var key = request.url.substring(origin.length + 1);
         if (key == "") {
-          key = "/";
+          key = "/secure-messenger/";
         }
         // If a resource from the old manifest is not in the new cache, or if
         // the MD5 sum has changed, delete it. Otherwise the resource is left
@@ -208,7 +208,7 @@ async function downloadOffline() {
   for (var request of await contentCache.keys()) {
     var key = request.url.substring(origin.length + 1);
     if (key == "") {
-      key = "/";
+      key = "/secure-messenger/";
     }
     currentContent[key] = true;
   }

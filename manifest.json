@@ -1,7 +1,7 @@
 {
     "name": "com.securemessenger.app",
     "short_name": "securemessenger",
-    "start_url": ".",
+    "start_url": "/secure-messenger/",
     "display": "standalone",
     "background_color": "#FFFFFF",
     "theme_color": "#0175C2",
